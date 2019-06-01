@@ -2,19 +2,19 @@
 <UnityGameFramework>
   <AssetBundleCollection>
     <AssetBundles>
-      <AssetBundle Name="Configs" LoadType="0" Packed="True" />
-      <AssetBundle Name="DataTables" LoadType="0" Packed="True" />
+      <AssetBundle Name="Configs" LoadType="0" Packed="True" ResourceGroups="Base" />
+      <AssetBundle Name="DataTables" LoadType="0" Packed="True" ResourceGroups="Base" />
       <AssetBundle Name="Entities" LoadType="0" Packed="True" />
-      <AssetBundle Name="Fonts" LoadType="0" Packed="True" />
-      <AssetBundle Name="Localization/Dictionaries" Variant="en-us" LoadType="0" Packed="True" />
-      <AssetBundle Name="Localization/Dictionaries" Variant="ko-kr" LoadType="0" Packed="True" />
-      <AssetBundle Name="Localization/Dictionaries" Variant="zh-cn" LoadType="0" Packed="True" />
-      <AssetBundle Name="Localization/Dictionaries" Variant="zh-tw" LoadType="0" Packed="True" />
+      <AssetBundle Name="Fonts" LoadType="0" Packed="True" ResourceGroups="Base" />
+      <AssetBundle Name="Localization/Dictionaries" Variant="en-us" LoadType="0" Packed="True" ResourceGroups="Base" />
+      <AssetBundle Name="Localization/Dictionaries" Variant="ko-kr" LoadType="0" Packed="True" ResourceGroups="Base" />
+      <AssetBundle Name="Localization/Dictionaries" Variant="zh-cn" LoadType="0" Packed="True" ResourceGroups="Base" />
+      <AssetBundle Name="Localization/Dictionaries" Variant="zh-tw" LoadType="0" Packed="True" ResourceGroups="Base" />
       <AssetBundle Name="Materials" LoadType="0" Packed="True" />
       <AssetBundle Name="Meshes" LoadType="0" Packed="True" />
-      <AssetBundle Name="Music/About" LoadType="0" Packed="True" />
-      <AssetBundle Name="Music/Background" LoadType="0" Packed="True" />
-      <AssetBundle Name="Music/Menu" LoadType="0" Packed="True" />
+      <AssetBundle Name="Music/About" LoadType="0" Packed="True" ResourceGroups="Music" />
+      <AssetBundle Name="Music/Background" LoadType="0" Packed="True" ResourceGroups="Music" />
+      <AssetBundle Name="Music/Menu" LoadType="0" Packed="True" ResourceGroups="Music" />
       <AssetBundle Name="Scenes" LoadType="0" Packed="True" />
       <AssetBundle Name="Sounds" LoadType="0" Packed="True" />
       <AssetBundle Name="Textures" LoadType="0" Packed="True" />
