@@ -78,8 +78,8 @@ namespace StarForce
                 m_UpdateResourceForm = Object.Instantiate(GameEntry.BuiltinData.UpdateResourceFormTemplate);
             }
 
-            GameEntry.Resource.UpdateResources(OnUpdateResourcesComplete);
-            Log.Info("Start update resources...");
+            Log.Info("Start update resource group 'Base' ...");
+            GameEntry.Resource.UpdateResources("Base", OnUpdateResourcesComplete);
         }
 
         private void ProcessUpdateResourcesComplete()
@@ -153,14 +153,43 @@ namespace StarForce
 
         private void OnUpdateResourcesComplete(GameFramework.Resource.IResourceGroup resourceGroup, bool result)
         {
-            if (result)
+            if (resourceGroup.Name == "Base")
             {
-                Log.Info("Update resources complete with no errors.");
-                ProcessUpdateResourcesComplete();
+                if (result)
+                {
+                    Log.Info("Update resource group 'Base' complete with no errors.");
+                    Log.Info("Start update resource group 'Music' ...");
+                    GameEntry.Resource.UpdateResources("Music", OnUpdateResourcesComplete);
+                }
+                else
+                {
+                    Log.Error("Update resource group 'Base' complete with errors.");
+                }
             }
-            else
+            else if (resourceGroup.Name == "Music")
             {
-                Log.Error("Update resources complete with errors.");
+                if (result)
+                {
+                    Log.Info("Update resource group 'Music' complete with no errors.");
+                    Log.Info("Start update other resources ...");
+                    GameEntry.Resource.UpdateResources(OnUpdateResourcesComplete);
+                }
+                else
+                {
+                    Log.Error("Update resource group 'Music' complete with errors.");
+                }
+            }
+            else // resourceGroup.Name == string.Empty
+            {
+                if (result)
+                {
+                    Log.Info("Update other resources complete with no errors.");
+                    ProcessUpdateResourcesComplete();
+                }
+                else
+                {
+                    Log.Error("Update other resources complete with errors.");
+                }
             }
         }
 
