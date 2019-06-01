@@ -120,13 +120,13 @@ namespace StarForce
             return string.Format("{0} GB", (length / 1024f / 1024f / 1024f).ToString("F2"));
         }
 
-        private void OnCheckResourcesComplete(bool needUpdateResources, int removedCount, int updateCount, long updateTotalLength, long updateTotalZipLength)
+        private void OnCheckResourcesComplete(int removedCount, int updateCount, long updateTotalLength, long updateTotalZipLength)
         {
             Log.Info("Check resources complete, '{0}' resources need to update, zip length is '{1}', unzip length is '{2}'.", updateCount.ToString(), updateTotalZipLength.ToString(), updateTotalLength.ToString());
 
             m_UpdateCount = updateCount;
             m_UpdateTotalZipLength = updateTotalZipLength;
-            if (!needUpdateResources)
+            if (updateCount <= 0)
             {
                 ProcessUpdateResourcesComplete();
                 return;
@@ -151,7 +151,7 @@ namespace StarForce
             StartUpdateResources(null);
         }
 
-        private void OnUpdateResourcesComplete(bool result)
+        private void OnUpdateResourcesComplete(GameFramework.Resource.IResourceGroup resourceGroup, bool result)
         {
             if (result)
             {

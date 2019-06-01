@@ -28,9 +28,9 @@ namespace StarForce
             base.OnEnter(procedureOwner);
 
 #if UNITY_EDITOR
-            if (Application.unityVersion != "2018.2.20f1" || Application.platform != RuntimePlatform.WindowsEditor)
+            if (Application.unityVersion != "2018.4.0f1" || Application.platform != RuntimePlatform.WindowsEditor)
             {
-                UnityEditor.EditorUtility.DisplayDialog("警告", "此热更新 Demo 使用的资源包仅适用于 Unity 2018.2.20f1、Windows 系统平台版本，您当前使用的 Unity 版本或系统平台不匹配，这可能导致材质丢失等显示错误。", "知道了");
+                UnityEditor.EditorUtility.DisplayDialog("警告", "此热更新 Demo 使用的资源包仅适用于 Unity 2018.4.0f1、Windows 系统平台版本，您当前使用的 Unity 版本或系统平台不匹配，这可能导致材质丢失等显示错误。", "知道了");
             }
 #endif
 
@@ -79,7 +79,6 @@ namespace StarForce
                 }
                 catch
                 {
-
                 }
             }
 
@@ -114,15 +113,19 @@ namespace StarForce
                 case Language.English:
                     currentVariant = "en-us";
                     break;
+
                 case Language.ChineseSimplified:
                     currentVariant = "zh-cn";
                     break;
+
                 case Language.ChineseTraditional:
                     currentVariant = "zh-tw";
                     break;
+
                 case Language.Korean:
                     currentVariant = "ko-kr";
                     break;
+
                 default:
                     currentVariant = "zh-cn";
                     break;
