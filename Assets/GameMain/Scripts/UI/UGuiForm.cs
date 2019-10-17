@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
-// Copyright © 2013-2019 Jiang Yin. All rights reserved.
-// Homepage: http://gameframework.cn/
-// Feedback: mailto:jiangyin@gameframework.cn
+// Copyright © 2013-2020 Jiang Yin. All rights reserved.
+// Homepage: https://gameframework.cn/
+// Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
 using System.Collections;
@@ -105,6 +105,15 @@ namespace StarForce
                     texts[i].text = GameEntry.Localization.GetString(texts[i].text);
                 }
             }
+        }
+
+#if UNITY_2017_3_OR_NEWER
+        protected override void OnRecycle()
+#else
+        protected internal override void OnRecycle()
+#endif
+        {
+            base.OnRecycle();
         }
 
 #if UNITY_2017_3_OR_NEWER
