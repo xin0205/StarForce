@@ -8,6 +8,7 @@
 using GameFramework;
 using GameFramework.Event;
 using GameFramework.Resource;
+using System.IO;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
@@ -185,7 +186,7 @@ namespace StarForce
                 return;
             }
 
-            GameEntry.Resource.UpdatePrefixUri = Utility.Path.GetCombinePath(m_VersionInfo.GameUpdateUrl, GetResourceVersionName(), GetPlatformPath());
+            GameEntry.Resource.UpdatePrefixUri = Utility.Path.GetRegularPath(Path.Combine(m_VersionInfo.GameUpdateUrl, GetResourceVersionName(), GetPlatformPath()));
 
             UpdateVersion();
         }
