@@ -14,6 +14,7 @@ namespace StarForce
         /// </summary>
         public static class AssetPriority
         {
+            public const int UIItemAsset = 200;
             public const int ConfigAsset = 100;
             public const int DataTableAsset = 100;
             public const int DictionaryAsset = 100;

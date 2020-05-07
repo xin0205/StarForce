@@ -200,5 +200,13 @@ namespace StarForce
         {
             m_LanguageTipsCanvasGroup.gameObject.SetActive(m_SelectedLanguage != GameEntry.Localization.Language);
         }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+
+            GameEntry.Entity.ShowRoleIcon(RoleStyle.Half, 2, m_MusicMuteToggle.transform);
+
+        }
     }
 }

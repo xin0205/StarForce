@@ -5,6 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
 
@@ -13,16 +14,16 @@ namespace StarForce
     [Serializable]
     public abstract class EntityData
     {
-        [SerializeField]
+        [SerializeField, ReadOnly]
         private int m_Id = 0;
 
-        [SerializeField]
+        [SerializeField, ReadOnly]
         private int m_TypeId = 0;
 
-        [SerializeField]
+        [SerializeField, ReadOnly]
         private Vector3 m_Position = Vector3.zero;
 
-        [SerializeField]
+        [SerializeField, ReadOnly]
         private Quaternion m_Rotation = Quaternion.identity;
 
         public EntityData(int entityId, int typeId)

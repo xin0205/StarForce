@@ -147,6 +147,7 @@ namespace StarForce
 #endif
         {
             base.OnPause();
+            GameEntry.Entity.HideAllUIItems(this.transform);
         }
 
 #if UNITY_2017_3_OR_NEWER

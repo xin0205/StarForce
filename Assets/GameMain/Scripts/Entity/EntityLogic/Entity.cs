@@ -6,6 +6,7 @@
 //------------------------------------------------------------
 
 using GameFramework;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
@@ -13,7 +14,7 @@ namespace StarForce
 {
     public abstract class Entity : EntityLogic
     {
-        [SerializeField]
+        [SerializeField, ReadOnly]
         private EntityData m_EntityData = null;
 
         public int Id

@@ -6,7 +6,10 @@
 //------------------------------------------------------------
 
 using GameFramework.DataTable;
+using GameFramework.Entity;
 using System;
+using System.Threading.Tasks;
+using UnityEngine;
 using UnityGameFramework.Runtime;
 
 namespace StarForce
@@ -33,6 +36,18 @@ namespace StarForce
         public static void HideEntity(this EntityComponent entityComponent, Entity entity)
         {
             entityComponent.HideEntity(entity.Entity);
+        }
+
+        public static void HideAllUIItems(this EntityComponent entityComponent, Transform transform)
+        {
+            transform.ForEach((child) =>
+            {
+                if (child.GetComponent<IEntity>() != null && child.GetComponent<UIItem>() != null)
+                {
+                    GameEntry.Entity.HideEntity(child.GetComponent<IEntity>().Id);
+                }
+            });
+
         }
 
         public static void AttachEntity(this EntityComponent entityComponent, Entity entity, int ownerId, string parentTransformPath = null, object userData = null)
@@ -73,6 +88,28 @@ namespace StarForce
         public static void ShowAsteroid(this EntityComponent entityCompoennt, AsteroidData data)
         {
             entityCompoennt.ShowEntity(typeof(Asteroid), "Asteroid", Constant.AssetPriority.AsteroiAsset, data);
+        }
+
+        
+        public static async Task<T> ShowEntityAsync<T>(this EntityComponent entityComponent, string entityGroup, int priority, EntityData data, string pathFormat) where T : EntityLogic
+        {
+            if (data == null)
+            {
+                Log.Warning("Data is invalid.");
+                return null;
+            }
+
+            IDataTable<DREntity> dtEntity = GameEntry.DataTable.GetDataTable<DREntity>();
+            DREntity drEntity = dtEntity.GetDataRow(data.TypeId);
+            if (drEntity == null)
+            {
+                Log.Warning("Can not load entity id '{0}' from data table.", data.TypeId.ToString());
+                return null;
+            }
+
+            EntityLogic entity = await entityComponent.ShowEntityAsync(data.Id, typeof(T), AssetUtility.GetFullPath(pathFormat, drEntity.AssetName), entityGroup, priority, data);
+
+            return (T)entity;
         }
 
         public static void ShowEffect(this EntityComponent entityComponent, EffectData data)

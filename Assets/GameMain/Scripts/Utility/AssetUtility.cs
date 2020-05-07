@@ -51,6 +51,23 @@ namespace StarForce
             return Utility.Text.Format("Assets/GameMain/Entities/{0}.prefab", assetName);
         }
 
+        public static string GetFullPath(string format, string name)
+        {
+            return Utility.Text.Format(format, name);
+        }
+
+        public static string GetItemAsset<T>() where T : UIItem
+        {
+
+            return "Assets/GameMain/UIItems/Items/{0}.prefab";
+           
+        }
+
+        public static string GetAssetItemAsset<T>() where T : UIItem
+        {
+            return "Assets/GameMain/UIItems/AssetItems/" + typeof(T).Name + "/{0}.prefab";
+        }
+
         public static string GetUIFormAsset(string assetName)
         {
             return Utility.Text.Format("Assets/GameMain/UI/UIForms/{0}.prefab", assetName);

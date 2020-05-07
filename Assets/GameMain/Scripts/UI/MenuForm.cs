@@ -15,6 +15,10 @@ namespace StarForce
         [SerializeField]
         private GameObject m_QuitButton = null;
 
+        [SerializeField]
+        private CurrencyIconWrapper m_CurrencyIcon;
+
+
         private ProcedureMenu m_ProcedureMenu = null;
 
         public void OnStartButtonClick()
@@ -59,6 +63,10 @@ namespace StarForce
             }
 
             m_QuitButton.SetActive(Application.platform != RuntimePlatform.IPhonePlayer);
+
+            m_CurrencyIcon.SetCurrency(CurrencyStyle.Multi, CurrencyType.Diamond);
+
+
         }
 
 #if UNITY_2017_3_OR_NEWER
@@ -70,6 +78,14 @@ namespace StarForce
             m_ProcedureMenu = null;
 
             base.OnClose(isShutdown, userData);
+           
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+
+            GameEntry.Entity.ShowFriendItem(FriendItemData.Create("好友", 2), m_QuitButton.transform);
         }
     }
 }
